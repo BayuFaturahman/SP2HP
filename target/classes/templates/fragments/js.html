@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="js">
+        
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/popper.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script> <!-- END BASE JS -->
+        <!-- BEGIN PLUGINS JS -->
+        <script src="assets/vendor/pace/pace.min.js"></script>
+         <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
+        <script src="assets/javascript/theme.min.js"></script> 
+        <script src="assets/vendor/particles.js/particles.min.js"></script>
+        <script>
+            /**
+             * Keep in mind that your scripts may not always be executed after the theme is completely ready,
+             * you might need to observe the `theme:load` event to make sure your scripts are executed after the theme is ready.
+             */
+            $(document).on('theme:init', () =>
+            {
+                /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+                particlesJS.load('particle-canvas', 'assets/javascript/pages/particles.json');
+            })
+        </script>
+        
+    </div>
+</html>

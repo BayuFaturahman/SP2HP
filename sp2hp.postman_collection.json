@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "1ff52b15-9112-40cf-8b4c-3a328f254afc",
+		"name": "sp2hp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://10.101.100.172:5555/appsp2hp/rating?no_lp=test&rating=5&ip_user=1.1.1.1",
+					"protocol": "http",
+					"host": [
+						"10",
+						"101",
+						"100",
+						"172"
+					],
+					"port": "5555",
+					"path": [
+						"appsp2hp",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "no_lp",
+							"value": "test"
+						},
+						{
+							"key": "rating",
+							"value": "5"
+						},
+						{
+							"key": "tgl_lahir_pelapor",
+							"value": "16-01-1980",
+							"disabled": true
+						},
+						{
+							"key": "ip_user",
+							"value": "1.1.1.1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

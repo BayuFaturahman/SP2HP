@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" />
+
+<head th:replace="fragments/css :: css"></head>
+
+<body>
+    <main id="particle-canvas"  class="empty-state empty-state-fullpage bg-piknas text-white gradient">
+        <div class="empty-state-container">
+            <div class="image-auth">
+                <img class="w-50" src="assets/images/sp2hp.png">
+            </div>
+            <h1 class="state-header mt-2"> SURAT PEMBERITAHUAN PERKEMBANGAN HASIL PENYIDIKAN ONLINE </h1>
+            <form id="test">
+            <div class="form-group">
+                <div class="input-group circle mb-1">
+                    <label class="input-group-prepend" for="pi1"><span class="input-group-text"><span
+                                class="far fa-file-alt"></span></span></label> <input type="text" class="form-control" id="noLp"
+                                                                          placeholder="No. Laporan Polisi">
+                </div>
+                <div class="input-group circle mb-1">
+                    <label class="input-group-prepend" for="pi1"><span class="input-group-text"><span
+                                class="far fa-user"></span></span></label> <input type="text" class="form-control" id="nama"
+                                                                      placeholder="Nama">
+                </div>
+                <div class="input-group circle mb-1">
+                    <label class="input-group-prepend" for="pi1"><span class="input-group-text"><span
+                                class="far fa-calendar-alt"></span></span></label> <input type="text" class="form-control" id="tanggalLahir"
+                                                                              placeholder="Tanggal Lahir" data-toggle="flatpickr" readonly="readonly" data-date-format="d-m-Y">
+                </div>
+                <button type="button" onclick="cari()" class="btn btn-primary mt-2 w-50" data-toggle="modal" data-target="#exampleModalDrawerRight">Cari</button>
+
+            </div>
+            </form>
+        </div>
+        <div class="modal modal-drawer fade" id="exampleModalDrawerRight" tabindex="-1" role="dialog"aria-labelledby="exampleModalDrawerRightLabel" aria-hidden="true" style="border-radius:25rem;">
+  
+            <!-- .modal-dialog -->
+            <div class="modal-dialog modal-drawer-bottom" role="document">
+                <!-- .modal-content -->
+                <div class="modal-content" style="border-top-left-radius: 25px; border-top-right-radius: 25px;margin-left: 30%">
+                   
+                    <!-- .modal-header -->
+                    <div class="modal-header" id="nomerLp"></div>
+                    <div class="modal-body" id="">
+                    <!--<div th:if="${dataBerkas != 'data tidak ditemukan'}">-->
+                    <!--                                 <img  src="assets/images/warning.png" />-->
+                        
+                    <img  id="imgSp2hp" th:src="'data:image/png;base64,'"/>
+                   
+                    <!--                              <div th:if="${dataBerkas =='data tidak ditemukan'}">
+                                                       <img  src="assets/images/warning.png" />
+                                                </div>-->
+                    <!--</div>-->
+                    </div>
+
+                    <!--                          </th:block>-->
+                    <div class="modal-footer bg-secondary">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-black mt-3">silahkan hubungi pengaduan masyarakat atau klik <a href="#">disini</a></span>
+                                <div class="btn-toolbar">
+                                    <div class="team">
+                                        <h4 class="list-group-item-title" style="font-size: small">Puas dengan pelayanan kami?
+                                        </h4>
+                                        <span class="list-group-item-text rating rating-sm text-right" >
+                                            <input type="radio" name="rating6"  id="ratingSm5" value="5"> 
+                                                <label for="ratingSm5"><span class="fa fa-star"></span></label> 
+                                                <input type="radio" name="rating6" id="ratingSm4" value="4"/> 
+                                                <label for="ratingSm4"><span class="fa fa-star"></span></label> 
+                                                <input type="radio" name="rating6" id="ratingSm3" value="3" checked/> 
+                                                <label for="ratingSm3"><span class="fa fa-star"></span></label> 
+                                                <input type="radio" name="rating6" id="ratingSm2" value="2"/> 
+                                                <label for="ratingSm2"><span class="fa fa-star"></span></label> 
+                                                <input type="radio" name="rating6" id="ratingSm1" value="1"/> 
+                                                <label for="ratingSm1"><span class="fa fa-star"></span></label>
+
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+            
+        </div>
+        <!--<img  th:src="'data:image/png;base64,' + ${dataBerkas}"/>-->
+
+    </main>
+    <script th:inline="javascript">
+
+        
+
+        function cari() {
+
+            var noLp = document.getElementById("noLp").value;
+            var nama = document.getElementById("nama").value;
+            var tanggalLahir = document.getElementById("tanggalLahir").value;
+            
+            
+            var xhr = new XMLHttpRequest();
+            var url = "/cari?noLp=" + noLp + "&nama=" + nama + "&tanggalLahir=" + tanggalLahir;
+            //           location.href=url;
+            xhr.open('GET', url, true);
+
+            xhr.responseType = 'text';
+
+            xhr.onload = function () {
+                if (xhr.readyState === xhr.DONE) {
+                    if (this.responseText != "data tidak ditemukan") {
+                        document.getElementById("nomerLp").innerHTML = '<h5 id="nomerLpR" class="modal-title text-black"> ' + noLp + ' </h5><button type="button" class="close" data-dismiss="modal"  aria-label="Close" onclick="rating()"><span aria-hidden="true">×</span></button>';
+                        document.getElementById("imgSp2hp").src = 'data:image/png;base64,' + this.responseText;
+                     
+                     }else {
+                          document.getElementById("nomerLp").innerHTML = '<h5 id="nomerLpR" class="modal-title text-black"> ' + noLp + ' </h5><button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="rating()"><span aria-hidden="true">×</span></button>';
+                          document.getElementById("imgSp2hp").src = "assets/images/warning.png";
+                        
+                   }
+                }
+               
+            };
+
+            xhr.open("GET", url, true);
+            xhr.send();
+           
+        }
+        
+        function rating() {
+            var noLpR = document.getElementById("noLp").value;
+            alert(noLpR);
+            var nilai="";
+             var ratingan = document.getElementsByName("rating6");
+             alert(ratingan);
+                for (var i = 0, length = ratingan.length; i < length; i++) {
+                  if (ratingan[i].checked) {
+                     nilai = ratingan[i].value;
+                    alert(nilai);
+                      break;
+                  }
+             }
+             
+           
+             
+            var xhr = new XMLHttpRequest();
+            var url = "/rating?noLp=" + noLpR + "&rating=" + nilai;
+            xhr.open('POST', url, true);
+                   
+            xhr.send();
+           
+        
+        }
+
+    </script>
+    <div th:replace="fragments/js :: js"></div>
+
+</body>
+
+</html>

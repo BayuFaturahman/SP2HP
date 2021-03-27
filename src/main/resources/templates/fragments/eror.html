@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+     <th:block th:fragment="eror">
+          <div class="modal modal-drawer fade" id="exampleModalDrawerRight" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalDrawerRightLabel" aria-hidden="true" style="
+                 border-radius:25rem;">
+                <!-- .modal-dialog -->
+                <div class="modal-dialog modal-drawer-bottom" role="document">
+                    <!-- .modal-content -->
+                    <div class="modal-content" style="border-top-left-radius: 25px; border-top-right-radius: 25px;">
+                        <!-- .modal-header -->
+                        <div class="modal-header">
+                            <h5 id="modalBoardConfigTitle" class="modal-title text-black"> B/282/IX/2016/Reskrim </h5><button
+                                type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span
+                                    aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <img class="img-modal" src="assets/images/warning.png">
+                        </div>
+                        <div class="modal-footer bg-secondary">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-black mt-3">silahkan hubungi pengaduan masyarakat atau klik <a href="#">disini</a></span>
+                                    <div class="btn-toolbar">
+                                        <div class="team">
+                                            <h4 class="list-group-item-title" style="font-size: small">Puas dengan pelayanan kami?
+                                            </h4>
+                                               <span class="list-group-item-text rating rating-sm text-right"><input type="radio" name="rating6" id="ratingSm5" value="5"> 
+                                            <label for="ratingSm5"><span class="fa fa-star"></span></label> 
+                                            <input type="radio" name="rating6" id="ratingSm4" value="4"> 
+                                            <label for="ratingSm4"><span class="fa fa-star"></span></label> 
+                                            <input type="radio" name="rating6" id="ratingSm3" value="3" checked> 
+                                            <label for="ratingSm3"><span class="fa fa-star"></span></label> 
+                                            <input type="radio" name="rating6" id="ratingSm2" value="2"> 
+                                            <label for="ratingSm2"><span class="fa fa-star"></span></label> 
+                                            <input type="radio" name="rating6" id="ratingSm1" value="1"> 
+                                            <label for="ratingSm1"><span class="fa fa-star"></span></label>
+                                                
+                                        </span>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+    
+     </th:block>
+</html>

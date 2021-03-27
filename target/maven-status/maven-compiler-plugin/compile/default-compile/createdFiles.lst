@@ -1,0 +1,10 @@
+com\pusiknas\web\repo\MahasiswaRepository.class
+com\pusiknas\web\dao\mahasiswaDao.class
+com\pusiknas\web\service\MahasiswaService.class
+com\journaldev\hibernate\util\SessionFactoryUtil.class
+com\pusiknas\web\config\WebConfig.class
+com\pusiknas\web\controller\HomeController.class
+com\pusiknas\web\config\SecurityConfig.class
+com\pusiknas\web\config\CaptchaConfig.class
+com\pusiknas\web\entity\mahasiswaEntity.class
+com\pusiknas\web\PusiknasApplication.class
